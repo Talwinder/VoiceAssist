@@ -1,0 +1,125 @@
+[
+  {
+    "BankName": "CITI",
+    "URLs": [
+      {
+        "requestType": "GetAccountDetail",
+        "url": "http://107.23.94.249/CITI/AccountDetail"
+      },
+      {
+        "requestType": "GetTransactionDetail",
+        "url": "http://107.23.94.249/CITI/TransactionDetail"
+      },
+      {
+        "requestType": "GetCardDetails",
+        "url": "http://107.23.94.249/CITI/CardDetails"
+      },
+      {
+        "requestType": "GetDebitCardDetails",
+        "url": "http://107.23.94.249/CITI/CardDetail/DebitCard"
+      },
+      {
+        "requestType": "GetCreditCardDetails",
+        "url": "http://107.23.94.249/CITI/CardDetail/CreditCard"
+      },
+      {
+        "requestType": "VerifyFundPayee",
+        "url": "http://107.23.94.249/CITI/VerifyFundPayee"
+      },
+      {
+        "requestType": "GenerateOTP",
+        "url": "http://107.23.94.249/CITI/GenerateOtp"
+      },
+      {
+        "requestType": "ValidateOtp",
+        "url": "https://107.23.94.249/CITI/ValidateOtp"
+      },
+      {
+        "requestType": "ValidateFundTransfer",
+        "url": "https://107.23.94.249/CITI/ProcessTransaction"
+      }
+    ]
+  },
+  {
+    "BankName": "HDFC",
+    "URLs": [
+      {
+        "requestType": "GetAccountDetail",
+        "url": "http://107.23.94.249/HDFC/AccountDetail"
+      },
+      {
+        "requestType": "GetTransactionDetail",
+        "url": "http://107.23.94.249/HDFC/TransactionDetail"
+      },
+      {
+        "requestType": "GetCardDetails",
+        "url": "http://107.23.94.249/HDFC/CardDetails"
+      },
+      {
+        "requestType": "GetDebitCardDetails",
+        "url": "http://107.23.94.249/HDFC/CardDetail/DebitCard"
+      },
+      {
+        "requestType": "GetCreditCardDetails",
+        "url": "http://107.23.94.249/HDFC/CardDetail/CreditCard"
+      },
+      {
+        "requestType": "VerifyFundPayee",
+        "url": "http://107.23.94.249/HDFC/VerifyFundPayee"
+      },
+      {
+        "requestType": "GenerateOTP",
+        "url": "http://107.23.94.249/HDFC/GenerateOtp"
+      },
+      {
+        "requestType": "ValidateOtp",
+        "url": "https://107.23.94.249/HDFC/ValidateOtp"
+      },
+      {
+        "requestType": "ValidateFundTransfer",
+        "url": "https://107.23.94.249/HDFC/ProcessTransaction"
+      }
+    ]
+  },
+  {
+    "BankName": "ICICI",
+    "URLs": [
+      {
+        "requestType": "GetAccountDetail",
+        "url": "http://107.23.94.249/ICICI/AccountDetail"
+      },
+      {
+        "requestType": "GetTransactionDetail",
+        "url": "http://107.23.94.249/ICICI/TransactionDetail"
+      },
+      {
+        "requestType": "GetCardDetails",
+        "url": "http://107.23.94.249/ICICI/CardDetails"
+      },
+      {
+        "requestType": "GetDebitCardDetails",
+        "url": "http://107.23.94.249/ICICI/CardDetail/DebitCard"
+      },
+      {
+        "requestType": "GetCreditCardDetails",
+        "url": "http://107.23.94.249/ICICI/CardDetail/CreditCard"
+      },
+      {
+        "requestType": "VerifyFundPayee",
+        "url": "http://107.23.94.249/ICICI/VerifyFundPayee"
+      },
+      {
+        "requestType": "GenerateOTP",
+        "url": "http://107.23.94.249/ICICI/GenerateOtp"
+      },
+      {
+        "requestType": "ValidateOtp",
+        "url": "https://107.23.94.249/ICICI/ValidateOtp"
+      },
+      {
+        "requestType": "ValidateFundTransfer",
+        "url": "https://107.23.94.249/ICICI/ProcessTransaction"
+      }
+    ]
+  }
+]

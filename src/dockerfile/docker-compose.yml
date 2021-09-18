@@ -1,0 +1,38 @@
+version: '3.4'
+
+services: 
+    catalogdb:
+      image: mongo
+      container_name: voiceassistdb
+      restart: always
+      volumes:  
+         - mongo_data:/data/db
+      ports:
+         - "27017:27017"
+    basketdb:
+      image: redis
+      container_name: voiceassistcache
+      restart: always
+      ports:
+         - "6379:6379"     
+
+    CreditCardService:
+      image: tsin24/CreditCardService
+      environment: 
+          - ASPNETCORE_ENVIRONMENT=Development
+          - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
+      depends_on: 
+          - voiceassistdb
+      ports: 
+          -  "8001:80"
+    AccountService:
+      image: tsin24/AccountService
+      environment: 
+          - ASPNETCORE_ENVIRONMENT=Development
+          - "ConnectionString:Redis=voiceassistcache:6379"
+      depends_on: 
+          - voiceassistcache
+      ports: 
+          -  "8002:80"    
+volumes: 
+    mongo_data:                     

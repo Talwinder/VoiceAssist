@@ -1,0 +1,17 @@
+C:\Micro Services\CreditService\src\Common\EventBusMQ\bin\Debug\netstandard2.0\EventBusMQ.deps.json
+C:\Micro Services\CreditService\src\Common\EventBusMQ\bin\Debug\netstandard2.0\EventBusMQ.dll
+C:\Micro Services\CreditService\src\Common\EventBusMQ\bin\Debug\netstandard2.0\EventBusMQ.pdb
+C:\Micro Services\CreditService\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.AssemblyInfoInputs.cache
+C:\Micro Services\CreditService\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.AssemblyInfo.cs
+C:\Micro Services\CreditService\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.csproj.CoreCompileInputs.cache
+C:\Micro Services\CreditService\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.dll
+C:\Micro Services\CreditService\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.pdb
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\bin\Debug\netstandard2.0\EventBusMQ.deps.json
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\bin\Debug\netstandard2.0\EventBusMQ.dll
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\bin\Debug\netstandard2.0\EventBusMQ.pdb
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.csprojAssemblyReference.cache
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.AssemblyInfoInputs.cache
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.AssemblyInfo.cs
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.csproj.CoreCompileInputs.cache
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.dll
+C:\POCs'\VoiceAssistMicroServices\src\Common\EventBusMQ\obj\Debug\netstandard2.0\EventBusMQ.pdb
