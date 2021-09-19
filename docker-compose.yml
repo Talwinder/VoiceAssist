@@ -8,7 +8,7 @@ services:
   voiceassistcache:
      image: redis
 
-  CreditService:
+  CreditCardService:
     image: tsin24/CreditCardService
     build:
       context: .
@@ -18,7 +18,7 @@ services:
     build:
       context: .
       dockerfile: src/AccountService/Dockerfile
-   UserService:
+  UserService:
     image: tsin24/UserService
     build:
       context: .

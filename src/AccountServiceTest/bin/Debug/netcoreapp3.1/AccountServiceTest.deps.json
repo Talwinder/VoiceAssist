@@ -1786,6 +1786,9 @@
       "AccountService/1.0.0": {
         "dependencies": {
           "AutoMapper": "10.1.1",
+          "MassTransit": "7.2.3-develop.234",
+          "MassTransit.AspNetCore": "7.2.3-develop.234",
+          "MassTransit.RabbitMQ": "7.2.3-develop.234",
           "MongoDB.Driver": "2.11.4",
           "Newtonsoft.Json": "12.0.3",
           "StackExchange.Redis": "2.2.4",

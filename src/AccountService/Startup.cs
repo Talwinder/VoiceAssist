@@ -9,6 +9,7 @@ using AccountService.Repositories;
 using AccountService.Repositories.Interfaces;
 using AccountService.Repositories.Interfaces.StaticClassesInterfaces;
 using AccountService.Repositories.Wrappers;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -50,6 +51,26 @@ namespace AccountService
             services.AddTransient<ISendReqBankAPI, SendReqBankAPIWrapper>();
             services.AddTransient<IJsonUtility, NewtonsoftJsonWrapper>();
 
+            // services
+            //     .AddMassTransit(config =>
+            //     {
+            //         config.AddConsumer<UserTokenConsumer>();
+            //         config
+            //             .UsingRabbitMq((ctx, cfg) =>
+            //             {
+            //                 cfg
+            //                     .Host(Configuration["EventBusSettings:HostAddress"]);
+            //                 cfg
+            //                     .ReceiveEndpoint(EventBusConstants
+            //                         .BasketCheckoutQueue,
+            //                     c =>
+            //                     {
+            //                         c.ConfigureConsumer<BasketCheckoutConsumer
+            //                         > (ctx);
+            //                     });
+            //             });
+            //     });
+            services.AddMassTransitHostedService();
             services
                 .AddSwaggerGen(c =>
                 {
