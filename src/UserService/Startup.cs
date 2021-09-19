@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UserService.Data;
-using UserService.Data.Interfaces;
-using UserService.Repositories;
-using UserService.Repositories.Interfaces;
+using AutoMapper;
+using AutoMapper.Internal;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,14 +13,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using StackExchange.Redis;
+using UserService.Data;
+using UserService.Data.Interfaces;
+using UserService.Mapper;
+using UserService.Repositories;
+using UserService.Repositories.Interfaces;
 
 namespace UserService
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
-        
         {
             Configuration = configuration;
         }
@@ -32,20 +36,50 @@ namespace UserService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ConnectionMultiplexer>(sp => 
-            {
-                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
-                return ConnectionMultiplexer.Connect(configuration);
-            }
-            );
+            services
+                .AddSingleton<ConnectionMultiplexer>(sp =>
+                {
+                    var configuration =
+                        ConfigurationOptions
+                            .Parse(Configuration.GetConnectionString("Redis"),
+                            true);
+                    return ConnectionMultiplexer.Connect(configuration);
+                });
+
+            // MassTransit-RabbitMQ Configuration
+            services
+                .AddMassTransit(config =>
+                {
+                    config
+                        .UsingRabbitMq((ctx, cfg) =>
+                        {
+                            cfg
+                                .Host(Configuration["EventBusSettings:HostAddress"]);
+                        });
+                });
+            services.AddMassTransitHostedService();
 
             services.AddTransient<IUserContext, UserContext>();
             services.AddTransient<IUserRepository, UserRepository>();
+          
+            var config =
+                new AutoMapper.MapperConfiguration(cfg =>
+                    {
+                        cfg.AddProfile(new UserProfile());
+                    });
 
-            services.AddSwaggerGen(c => 
-            {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo{ Title = "Basket API", Version = "v1" });
-            });
+            var mapper = config.CreateMapper();
+            services.AddSingleton (mapper);
+            services
+                .AddSwaggerGen(c =>
+                {
+                    c
+                        .SwaggerDoc("v1",
+                        new Microsoft.OpenApi.Models.OpenApiInfo {
+                            Title = "UserService API",
+                            Version = "v1"
+                        });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,15 +96,18 @@ namespace UserService
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-              c.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket API V1")
-            );
+            app
+                .UseSwaggerUI(c =>
+                    c
+                        .SwaggerEndpoint("/swagger/v1/swagger.json",
+                        "UserService API V1"));
         }
     }
 }

@@ -24,7 +24,7 @@ namespace UserService.Repositories
 
 
 
-        public async Task<UserDetail> GetBasket(string userName)
+        public async Task<UserDetail> GetCacheToken(string userName)
         {
             var userInfo = await _context
                                 .Redis

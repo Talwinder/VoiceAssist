@@ -8,10 +8,7 @@ namespace UserService.Repositories.Interfaces
 {
     public interface IUserRepository
     {
-        Task<UserDetail> GetBasket(string userName);
-
-       
-
+        //  Task<UserDetail> GetBasket(string userName);
         Task<string> ValidateUserPin(UserDetail user);
     }
 }

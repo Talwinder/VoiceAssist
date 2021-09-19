@@ -3,16 +3,16 @@
 version: '3.4'
 
 services:
-  catalogdb:
+  voiceassistdb:
      image : mongo
-  basketdb:
+  voiceassistcache:
      image: redis
 
   CreditService:
-    image: tsin24/CreditService
+    image: tsin24/CreditCardService
     build:
       context: .
-      dockerfile: src/CreditService/Dockerfile
+      dockerfile: src/CreditCardService/Dockerfile
   AccountService:
     image: tsin24/AccountService
     build:
