@@ -29,7 +29,7 @@ services:
       image: tsin24/accountservice
       environment: 
           - ASPNETCORE_ENVIRONMENT=Development
-         - "AccountDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
+          - "AccountDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
       depends_on: 
           - voiceassistdb
       ports: 
