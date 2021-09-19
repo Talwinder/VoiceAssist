@@ -20,7 +20,7 @@ services:
       image: tsin24/creditcardservice
       environment: 
           - ASPNETCORE_ENVIRONMENT=Development
-          - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
+          - "CreditDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
       depends_on: 
           - voiceassistdb
       ports: 
@@ -29,7 +29,7 @@ services:
       image: tsin24/accountservice
       environment: 
           - ASPNETCORE_ENVIRONMENT=Development
-         - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
+         - "AccountDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
       depends_on: 
           - voiceassistdb
       ports: 
@@ -38,7 +38,6 @@ services:
       image: tsin24/userservice
       environment: 
           - ASPNETCORE_ENVIRONMENT=Development
-          - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
           - "ConnectionString:Redis=voiceassistcache:6379"
       depends_on: 
           - voiceassistcache
