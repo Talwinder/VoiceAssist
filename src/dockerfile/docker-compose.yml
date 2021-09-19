@@ -16,8 +16,8 @@ services:
       ports:
          - "6379:6379"     
 
-    CreditCardService:
-      image: tsin24/CreditCardService
+    creditcardservice:
+      image: tsin24/creditcardservice
       environment: 
           - ASPNETCORE_ENVIRONMENT=Development
           - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
@@ -25,8 +25,8 @@ services:
           - voiceassistdb
       ports: 
           -  "8001:80"
-    AccountService:
-      image: tsin24/AccountService
+    accountservice:
+      image: tsin24/accountservice
       environment: 
           - ASPNETCORE_ENVIRONMENT=Development
          - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
@@ -34,8 +34,8 @@ services:
           - voiceassistdb
       ports: 
           -  "8002:80"    
-    UserService:
-      image: tsin24/UserService
+    userservice:
+      image: tsin24/userservice
       environment: 
           - ASPNETCORE_ENVIRONMENT=Development
           - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
