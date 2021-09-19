@@ -14,10 +14,15 @@ services:
       context: .
       dockerfile: src/CreditService/Dockerfile
   AccountService:
-    image: tsin24/basketapi
+    image: tsin24/AccountService
     build:
       context: .
       dockerfile: src/AccountService/Dockerfile
+   UserService:
+    image: tsin24/UserService
+    build:
+      context: .
+      dockerfile: src/UserService/Dockerfile
 volumes: 
     mongo_data: 
    

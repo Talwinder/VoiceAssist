@@ -7,6 +7,7 @@ using AccountService.Controllers;
 using AccountService.Entities;
 using AccountService.Repositories.Interfaces;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 using Moq;
 using NUnit.Framework;
 

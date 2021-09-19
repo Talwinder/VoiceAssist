@@ -20,6 +20,6 @@ namespace AccountService.Repositories.Interfaces
 
         BankDetail GetBankDetails(string bankName);
 
-        Task<bool> DeleteAccount(string userName);
+        
     }
 }

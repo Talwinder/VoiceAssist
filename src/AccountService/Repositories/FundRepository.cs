@@ -30,19 +30,17 @@ namespace AccountService.Repositories
         private BankDetail GetBankDetails(string bankName)
         {
               _logger.LogInformation("Request info for GetBankDetails is {bankName}", bankName);
-            BankDetail bankdeatil = null;
+            BankDetail bankDetail = null;
             try
             {
-                    bankdeatil =   _context
-                           .BankDetails
-                           .Find(p => p.BankName == bankName)
-                           .FirstOrDefault();
+                     bankDetail =   _context
+                           .GetBankDetails(bankName);
             }
             catch (MongoException e)
             {
                  _logger.LogCritical("Error connecting to mongo db for bank details with error : {erroor}", e.Message);
             }
-              return bankdeatil; 
+              return bankDetail; 
         }
 
         public async Task<string> ValidateTransaction(FundDetail fundDetail)

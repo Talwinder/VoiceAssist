@@ -14,9 +14,9 @@ namespace AccountServiceTest.Steps
 {
   public class AccountcontrollerTest
   {
-      private AccountController controller;
-      private Mock<IAccountRepository> productServiceMock;
-      private ILogger<AccountController> logger;
+      // private AccountController controller;
+      // private Mock<IAccountRepository> productServiceMock;
+      // private ILogger<AccountController> logger;
 
      // private Product product;
   

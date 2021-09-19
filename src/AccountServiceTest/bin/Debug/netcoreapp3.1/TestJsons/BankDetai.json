@@ -1,0 +1,7 @@
+{
+  "bankName": "testBank",
+  "bankID": null,
+  "bankUrls": {
+    "testBankUrl": "testBankUrl"
+  }
+}

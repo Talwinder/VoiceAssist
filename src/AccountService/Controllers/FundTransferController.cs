@@ -41,7 +41,7 @@ namespace AccountService.Controllers
              {
                  _logger.LogError("Error occured, {reason} ", ex.Message);
              }
-            return Ok(500);
+            return Ok(200);
         }
 
         [HttpPost]

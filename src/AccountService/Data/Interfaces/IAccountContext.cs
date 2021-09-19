@@ -1,15 +1,13 @@
-
- using AccountService.Entities;
-using StackExchange.Redis;
+using AccountService.Entities;
 using MongoDB.Driver;
+using StackExchange.Redis;
+
 namespace AccountService.Data.Interfaces
-
 {
-
     public interface IAccountContext
     {
         IDatabase Redis { get; }
-        IMongoCollection<BankDetail> BankDetails { get; set;}
-    }
 
+        BankDetail GetBankDetails(string bankName);
+    }
 }

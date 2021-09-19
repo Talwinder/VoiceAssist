@@ -152,3 +152,5 @@ C:\POCs'\VoiceAssistMicroServices\src\AccountServiceTest\bin\Debug\netcoreapp3.1
 C:\POCs'\VoiceAssistMicroServices\src\AccountServiceTest\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
 C:\POCs'\VoiceAssistMicroServices\src\AccountServiceTest\bin\Debug\netcoreapp3.1\log4net.config
 C:\POCs'\VoiceAssistMicroServices\src\AccountServiceTest\bin\Debug\netcoreapp3.1\log4net.dll
+C:\POCs'\VoiceAssistMicroServices\src\AccountServiceTest\bin\Debug\netcoreapp3.1\TestJsons\AccountDetail.json
+C:\POCs'\VoiceAssistMicroServices\src\AccountServiceTest\bin\Debug\netcoreapp3.1\TestJsons\BankDetai.json

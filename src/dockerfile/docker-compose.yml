@@ -1,7 +1,7 @@
 version: '3.4'
 
 services: 
-    catalogdb:
+    voiceassistdb:
       image: mongo
       container_name: voiceassistdb
       restart: always
@@ -9,7 +9,7 @@ services:
          - mongo_data:/data/db
       ports:
          - "27017:27017"
-    basketdb:
+    voiceassistcache:
       image: redis
       container_name: voiceassistcache
       restart: always
@@ -29,10 +29,20 @@ services:
       image: tsin24/AccountService
       environment: 
           - ASPNETCORE_ENVIRONMENT=Development
+         - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
+      depends_on: 
+          - voiceassistdb
+      ports: 
+          -  "8002:80"    
+    UserService:
+      image: tsin24/UserService
+      environment: 
+          - ASPNETCORE_ENVIRONMENT=Development
+          - "CatalogDatabaseSettings:ConnectionString=mongodb://voiceassistdb:27017"
           - "ConnectionString:Redis=voiceassistcache:6379"
       depends_on: 
           - voiceassistcache
       ports: 
-          -  "8002:80"    
+          -  "8003:80"   
 volumes: 
     mongo_data:                     

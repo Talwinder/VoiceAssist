@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using Microsoft.Extensions.Logging;
+using AccountService.Repositories.Interfaces.StaticClassesInterfaces;
 
 
 namespace AccountService.Repositories
@@ -16,30 +17,32 @@ namespace AccountService.Repositories
     {
         private readonly IAccountContext _context;
         private readonly ILogger<AccountRepository> _logger;
+        private readonly IJsonUtility _jsonUtility;
+        private readonly ISendReqBankAPI _sendReqBankAPI;
 
-        public AccountRepository(IAccountContext context,  ILogger<AccountRepository> logger)
+        public AccountRepository(IAccountContext context,  ILogger<AccountRepository> logger, IJsonUtility jsonUtility, ISendReqBankAPI sendReqBankAPI)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _logger = logger;
+            _jsonUtility = jsonUtility;
+            _sendReqBankAPI= sendReqBankAPI;
         }
 
         //This gets bank related URLs from the stored mobdo database
-        public BankDetail GetBankDetails(string bankName)
+        public  BankDetail GetBankDetails(string bankName)
         {
              _logger.LogInformation("Request info for GetBankDetails is {bankName}", bankName);
-            BankDetail bankdeatil = null;
+            BankDetail bankDetail = null;
             try
             {
-                    bankdeatil =   _context
-                           .BankDetails
-                           .Find(p => p.BankName == bankName)
-                           .FirstOrDefault();
+                    bankDetail =   _context
+                           .GetBankDetails(bankName);       
             }
             catch (MongoException e)
             {
                  _logger.LogCritical("Error connecting to mongo db for bank details with error : {erroor}", e.Message);
             }
-            return bankdeatil;
+            return bankDetail;
 
         }
 
@@ -52,8 +55,8 @@ namespace AccountService.Repositories
             {
                 return default(T);
             }
-            var result  =  SendReqBankAPI.SendRequest(userName,bankdeatils.BankUrls[request]);
-            return JsonConvert.DeserializeObject<T>(result);
+            var result  =  _sendReqBankAPI.SendRequest(userName,bankdeatils.BankUrls[request]);
+            return _jsonUtility.DeserializeObject<T>(result);
         }
 
         public async Task<AccountTransaction> GetAccountTransactions(string userName, string bankName)
@@ -64,18 +67,13 @@ namespace AccountService.Repositories
             {
                 return null;
             }
-            var result  =  SendReqBankAPI.SendRequest(userName,bankdeatils.BankUrls["AccountBalance"]);
-            return JsonConvert.DeserializeObject<AccountTransaction>(result);
+            var result  =  _sendReqBankAPI.SendRequest(userName,bankdeatils.BankUrls["AccountBalance"]);
+            return _jsonUtility.DeserializeObject<AccountTransaction>(result);
         }
         
 
         
       
-        public async Task<bool> DeleteAccount(string userName)
-        {
-            return await _context
-                            .Redis
-                            .KeyDeleteAsync(userName);
-        }
+     
     }
 }

@@ -10,6 +10,7 @@
         "dependencies": {
           "AccountService": "1.0.0",
           "Microsoft.NET.Test.Sdk": "16.4.0",
+          "MongoDB.Driver": "2.11.4",
           "NUnit3TestAdapter": "3.15.1",
           "SpecFlow.NUnit": "3.9.22",
           "SpecFlow.Tools.MsBuild.Generation": "3.9.22",

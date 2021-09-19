@@ -7,6 +7,8 @@ using AccountService.Data.Interfaces;
 using AccountService.Exceptions;
 using AccountService.Repositories;
 using AccountService.Repositories.Interfaces;
+using AccountService.Repositories.Interfaces.StaticClassesInterfaces;
+using AccountService.Repositories.Wrappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -45,6 +47,8 @@ namespace AccountService
             services.AddTransient<IAccountContext, AccountContext>();
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<IFundRepository, FundRepository>();
+            services.AddTransient<ISendReqBankAPI, SendReqBankAPIWrapper>();
+            services.AddTransient<IJsonUtility, NewtonsoftJsonWrapper>();
 
             services
                 .AddSwaggerGen(c =>
@@ -59,13 +63,8 @@ namespace AccountService
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(
-            IApplicationBuilder app,
-            IWebHostEnvironment env
-          
-        )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

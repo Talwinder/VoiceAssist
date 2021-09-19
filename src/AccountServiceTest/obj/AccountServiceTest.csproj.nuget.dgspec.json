@@ -47,6 +47,10 @@
               "target": "Package",
               "version": "[16.4.0, )"
             },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.11.4, )"
+            },
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[3.15.1, )"
