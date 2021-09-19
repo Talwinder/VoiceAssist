@@ -80,6 +80,39 @@ namespace AccountServiceTest.RepositoriesTest
             Assert.AreEqual(acc.Account_Balance, result.Account_Balance);
         }
 
+        [Test]
+        public async Task
+        GetAccountTransactions_ReturnsAccountTransactions_With5Transactions()
+        {
+            var trans =
+                new AccountTransaction {
+                    Items =
+                        new List<AccountTransactionItems> {
+                            new AccountTransactionItems { Amount = 30 }
+                        }
+                };
+            mockJsonUtility
+                .Setup(t =>
+                    t
+                        .DeserializeObject<AccountTransaction>(It
+                            .IsAny<string>()))
+                .Returns(trans);
+
+            repository =
+                new AccountRepository(contextMock.Object,
+                    logger,
+                    mockJsonUtility.Object,
+                    sendReqBankAPIMock.Object);
+
+            var result =
+                await repository
+                    .GetAccountTransactions("talwinders", "testBank");
+
+            Assert.IsNotNull (result);
+
+            Assert.AreEqual(trans.Items.Count, result.Items.Count);
+        }
+
         private BankDetail GetPreconfiguredBank()
         {
             return new BankDetail()

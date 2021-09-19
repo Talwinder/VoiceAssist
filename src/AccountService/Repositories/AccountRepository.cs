@@ -67,7 +67,7 @@ namespace AccountService.Repositories
             {
                 return null;
             }
-            var result  =  _sendReqBankAPI.SendRequest(userName,bankdeatils.BankUrls["AccountBalance"]);
+            var result  =  _sendReqBankAPI.SendRequest(userName,bankdeatils.BankUrls["AccountTransactions"]);
             return _jsonUtility.DeserializeObject<AccountTransaction>(result);
         }
         
